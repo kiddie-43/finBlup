@@ -1,0 +1,52 @@
+* {
+    font-size: 1.5rem;
+}
+
+.header-text {
+    //  border-bottom: 1px solid black;
+    font-weight: bold;
+    text-align: left;
+}
+
+.container-input {
+    background-color: rgba(177, 177, 177, 0.161);
+    padding: 1rem;
+    width: 100%;
+}
+
+.container-coments {
+    background-color: rgba(177, 177, 177, 0.161);
+    padding: 3rem;
+    width: 100%;
+}
+.carrusel {
+    width: 100%;
+}
+
+.carrusel-container {
+    margin-bottom: 3rem;
+    padding:10px;
+}
+@media (max-width: 625) {
+    .carrusel-container {
+        width: 100%;
+    }
+    .carrusel {
+        width: 100%;
+    }
+}
+
+@media (min-width: 992px) {
+    .carrusel-container {
+        width: 60%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .carrusel-container {
+        width: 50%;
+    }
+}
+.mat-dialog-container {
+    background-color: red;
+}

@@ -1,0 +1,41 @@
+<h2 mat-dialog-title style="width: 100%;" class="p-3">
+    <div class="d-flex justify-content-between ">
+    <div fxLayout="column" fxLayoutGap="gappx">
+        <div >
+            <div *ngIf="!data.edit" >
+                Crear comentario
+            </div>
+            <div *ngIf="data.edit" >
+                Editar comentario
+            </div>
+        </div>
+    </div>
+    <button mat-icon-button mat-dialog-close aria-label="Example icon button with a vertical three dot icon">
+        <mat-icon>clear</mat-icon>
+      </button>
+      </div>
+</h2>
+
+<mat-card-content style="width: 100%;">
+    <div class="d-flex justify-content-center aling-items-center">
+        <form [formGroup]="formularioComentario" style="width: 70%;">
+            <div>
+                <mat-form-field appearance="outline" style="width: 100%;">
+                    <mat-label>Comentario</mat-label>
+                    <textarea style="    
+                    resize: none;" matInput placeholder="comentario... " cols="40" rows="10" formControlName="comentario"></textarea>
+                </mat-form-field>
+            </div>
+            <div>
+                <label>Puntuacion</label>
+                <mat-divider class="mb-3 bg-dark"></mat-divider>
+                <mat-slider style="width: 100%; font-size: 3rem; height: 1rem;" thumbLabel [displayWith]="puntuacion"
+                    tickInterval="1" step="1" min="0" max="10" aria-label="units" formControlName="puntuacion">
+                </mat-slider>
+            </div>
+            <div class="mt-5 d-flex aling-items-center justify-content-center">
+                <button mat-button (click)="enviarFormulario()" [disabled]="formularioComentario.invalid">Comentar</button>
+            </div>
+        </form>
+    </div>
+</mat-card-content>

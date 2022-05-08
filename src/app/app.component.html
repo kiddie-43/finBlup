@@ -1,0 +1,11 @@
+<app-navbar></app-navbar>
+<app-loading [hidden]="!loading.loading" id="loader-container"></app-loading>
+
+<div style="height: 30rem;" [hidden]="!loading.loading">
+
+
+</div>
+<div style="margin-top: 3rem; margin-bottom:3rem ;" >
+   <router-outlet [hidden]="loading.loading"></router-outlet>
+</div> 
+<app-footer></app-footer>

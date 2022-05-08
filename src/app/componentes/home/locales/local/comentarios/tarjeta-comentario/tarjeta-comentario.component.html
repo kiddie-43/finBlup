@@ -1,0 +1,22 @@
+
+<div style="width: 100%;" class="d-flex justify-content-center align-items-center">
+    <!-- style="width: 50%;" -->
+    <mat-card class="example-card " style="width: 200%;">
+        <mat-card-title-group>
+            <mat-card-title>{{comentario.nombre_usuario}}</mat-card-title>
+            <mat-card-subtitle
+                [ngClass]="{'suspenso' :comentario.valoracion<5,'raspado': comentario.valoracion >=5 && comentario.valoracion<=7, 'bueno' : comentario.valoracion >=8 && comentario.valoracion<=10 }">
+                {{comentario.valoracion}} / 10</mat-card-subtitle>
+            <img mat-card-sm-image class="rounded" src="{{comentario.perfil}}">
+        </mat-card-title-group>
+        <mat-card-content>
+            {{comentario.comentario}}
+        </mat-card-content>
+        <div *ngIf="comentario.id_usuario == idUsuario" class="d-flex justify-content-end">
+            <button mat-button color="primary" (click)="actualizarComentario()">Editar</button>
+            <button mat-button color="warn" (click)="eliminarComentario(comentario.id)">Eliminar</button>
+        </div>
+        
+    </mat-card>
+
+</div>

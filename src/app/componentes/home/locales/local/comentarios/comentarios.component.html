@@ -1,0 +1,5 @@
+<div style="width: 100%; margin-bottom: 3rem;max-width: 50rem;" class="d-flex justify-content-center flex-column" *ngFor="let comment of comentarios" >
+    <div>
+        <app-tarjeta-comentario (valueResponse)="recibiRespuesta($event)"  [comentario]="comment"></app-tarjeta-comentario>
+    </div>
+</div>

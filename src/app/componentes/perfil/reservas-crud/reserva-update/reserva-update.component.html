@@ -1,0 +1,100 @@
+<h2 mat-dialog-title style="width: 100%;" class="p-3">
+    <div class="d-flex justify-content-between ">
+        <div fxLayout="column" fxLayoutGap="gappx">
+            <div>
+                <div>
+                    Informacion reserva
+                </div>
+            </div>
+        </div>
+        <button mat-icon-button mat-dialog-close aria-label="Example icon button with a vertical three dot icon">
+            <mat-icon>clear</mat-icon>
+        </button>
+    </div>
+</h2>
+
+<mat-card-content style="width: 100%;">
+    <div class="d-flex justify-content-center aling-items-center">
+        <div class="d-flex justify-content-center aling-items-center flex-column ">
+            <div>
+                <p style="font-weight: bold;"> Datos usuario </p>
+                <mat-divider style="background-color: black;"></mat-divider>
+                <p style=" margin-top: 1rem;">Nombre : {{data.data.nombre_usuario + " " +
+                    data.data.primer_apellido_usuario
+                    + " " + data.data.segundo_apellido_usuario }} </p>
+                <p>Email : {{data.data.email_user }} </p>
+                <p>Telefono : {{data.data.telefono_user }} </p>
+
+            </div>
+            <div>
+                <p style="font-weight: bold;"> Datos local </p>
+                <mat-divider style="background-color: black;"></mat-divider>
+                <p style=" margin-top: 1rem;">Nombre : {{data.data.nombre_local }}</p>
+                <p style=" margin-top: 1rem;">Direccion : {{data.data.direcion }}</p>
+            </div>
+
+            <div>
+                <p style="font-weight: bold;"> Datos reserva </p>
+                <mat-divider style="background-color: black;"></mat-divider>
+                <p style=" margin-top: 1rem;"><span style="font-weight: bold;"> Fecha hora :</span> {{data.data.fecha + " / " + data.data.hora}}</p>
+                <p style=" margin-top: 1rem;"><span style="font-weight: bold;"> Zona : </span>{{data.data.zona_reserva }}</p>
+                
+                <p *ngIf="data.data.comentario" style=" margin-top: 1rem;"><span style="font-weight: bold;"> Comentario : </span>  {{data.data.comentario }}</p>
+            </div>
+
+            <div *ngIf="data.hostelero">
+
+                <form [formGroup]="updateEstado">
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Estado reserva</mat-label>
+                        <mat-select formControlName="estado">
+                            <mat-option [value]="estado.id_estado" *ngFor="let estado of estados">{{estado.nombre}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+    
+    
+                </form>
+                
+
+
+
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+    <div class="d-flex justify-content-end " style="width: 90%;">
+        <button mat-button (click)="updateReservaEstado()">Enviar</button>
+    </div>
+
+</mat-card-content>
+
+
+
+
+
+<!-- 
+
+<h2 mat-dialog-title style="width: 100%;" class="p-1">
+    <div class="d-flex justify-content-between ">
+        <div fxLayout="column" fxLayoutGap="gappx">
+            <div>
+                Editar reserva
+            </div>
+        </div>
+        <button mat-icon-button mat-dialog-close aria-label="Example icon button with a vertical three dot icon">
+            <mat-icon>clear</mat-icon>
+        </button>
+    </div>
+</h2>
+<mat-dialog-content style="max-width: 50rem;">
+  
+      
+
+    
+</mat-dialog-content> -->

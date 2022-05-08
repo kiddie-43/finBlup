@@ -1,0 +1,83 @@
+<div class="contenedor d-flex justify-content-center flex-column" *ngIf="!loader.loading && localData">
+    <div class="container text-center text-md-start mt-5 mb-5">
+        <div class="row mt-3">
+            <div class="col-md-7 col-lg-5 col-xl-5 mx-auto mb-md-0 mb-4 d-flex aling-items-center flex-column">
+
+                <div>
+                    <app-carrusel class="rounded" [carrusel]="localData.carrusel"></app-carrusel>
+                </div>
+                <div style="margin-top: 1rem;">
+                    <p style="font-weight: bold; ">Nombre : </p>
+                    <mat-divider style="background-color: black;"></mat-divider>
+                    <p style="font-size: 1rem; margin-top: 1rem;">{{localData.nombre_local}}</p>
+                </div>
+                <div style="margin-top: 1rem;">
+                    <p style="font-weight: bold; ">Direccion : </p>
+                    <mat-divider style="background-color: black;"></mat-divider>
+                 
+                    <p style="font-size: 1rem; margin-top: 1rem;">{{localData.direccion}}</p>
+
+                </div>
+                <div style="margin-top: 1rem;">
+                    <p style="font-weight: bold; ">Descripciones : </p>
+                    <mat-divider style="background-color: black;"></mat-divider>
+                </div>
+
+                <div style="margin-top: 1rem;">
+                    <form [formGroup]="perfilLocalForm">
+
+                        <mat-form-field appearance="outline" style="width: 100%;">
+                            <mat-label> Descripcion </mat-label>
+                            <textarea matInput style="    resize: none;" rows="5" formControlName="descripcion_local"></textarea>
+                        </mat-form-field>
+
+
+                        <mat-form-field appearance="outline" style="width: 100%;">
+                            <mat-label> Carta </mat-label>
+                            <textarea matInput style="    resize: none;" rows="5" formControlName="carta"></textarea>
+                        </mat-form-field>
+
+                        <div style="margin-top: 1rem;">
+                            <p style="font-weight: bold; ">Zonas : </p>
+                            <mat-divider style="background-color: black;"></mat-divider>
+                        </div>
+
+                        <mat-form-field appearance="outline" *ngIf="zonasLocal && localData" style="width: 100%; margin-top: 1rem;">
+                            <mat-label>Zonas local</mat-label>
+                            <mat-select  formControlName="zonaLocal">
+                                <mat-option (onSelectionChange)=" updateDescripcionZona(zona )" *ngFor="let zona of zonasLocal" [value]="zona.id_zona">
+                                    {{zona.nombre}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" style="width: 100%;">
+                            <mat-label> Descripcion </mat-label>
+                            <textarea formControlName="descripcionZona" matInput style="    resize: none;" rows="5"></textarea>
+                        </mat-form-field>
+                    </form>
+                </div>
+
+
+
+
+                <div class="d-flex justify-content-center" style="width: 100%; margin-top: 1rem;">
+ <button (click)="closeSesionUser()" class="btn btn-outline-danger">
+                            Cerrar Sesion
+                        </button>
+
+                    <div class="d-flex justify-content-center" >
+                       
+                    </div>
+
+                    <div class="d-flex justify-content-center" style="width: 50%;">
+                        <!-- <button class="btn btn-outline-primary" (click)="updateDataUser()">
+                            Actualizar perfil
+                        </button> -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

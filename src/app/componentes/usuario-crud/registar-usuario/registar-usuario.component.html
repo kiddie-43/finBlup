@@ -1,0 +1,92 @@
+
+<div style="padding: 2rem;">
+    <h1 class="text-center"> Registrarse </h1>
+    <form [formGroup]="registrarsuarioForm" autocomplete="off">
+       
+        <div class="text-center">
+            <mat-form-field  class="input" appearance="outline" style="max-width: 30rem;">
+                <mat-label>Nombre usuario</mat-label>
+                <input matInput type="text" formControlName="nickUser" maxlength="40">
+                <button mat-icon-button matSuffix class="d-flex align-items-center">
+                    <mat-icon matSuffix class="material-icons">account_circle</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+       
+        <div class="text-center  ">
+            <mat-form-field class="input" appearance="outline" style="max-width: 30rem;">
+                <mat-label>Nombre </mat-label>
+                <input  matInput type="text" formControlName="nombreUser" maxlength="40">
+                <button mat-icon-button matSuffix>
+                    <mat-icon matSuffix class="material-icons">person</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+        <div class="text-center  ">
+            <mat-form-field class="input" appearance="outline" style="max-width: 30rem;">
+                <mat-label>Primer apellido</mat-label>
+                <input  matInput type="text" formControlName="primer_apellido" maxlength="40">
+                <button mat-icon-button matSuffix>
+                    <mat-icon matSuffix class="material-icons" >person</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+        <div class="text-center  ">
+            <mat-form-field class="input" appearance="outline" style="max-width: 30rem;">
+                <mat-label> Segundo apellido </mat-label>
+                <input  matInput type="text" formControlName="segundo_apellido" maxlength="40">
+                <button mat-icon-button matSuffix>
+                    <mat-icon matSuffix class="material-icons">person</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+        <!-- Añadir numero telefono de material angular -->
+        <div class="text-center  " >
+            <mat-form-field class="input" appearance="outline" style="max-width: 30rem;">
+                <mat-label>Numero telefono</mat-label>
+                <input  matInput type="text" formControlName="telefono" maxlength="9">
+                <button mat-icon-button matSuffix>
+                    <mat-icon matSuffix class="material-icons" >smartphone</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+        <div class="text-center  ">
+            <mat-form-field class="input" appearance="outline" style="max-width: 30rem;">
+                <mat-label>Email</mat-label>
+                <input  matInput type="text" formControlName="emailUser"maxlength="60">
+                <button mat-icon-button matSuffix>
+                    <mat-icon matSuffix class="material-icons">email</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+        <div class="text-center  ">
+            <mat-form-field class="input" appearance="outline" style="max-width: 30rem;">
+                <mat-label>Contraseña</mat-label>
+                <input  matInput [type]="hide ? 'password' : 'text'" formControlName="passUser" maxlength="40">
+                <button mat-icon-button matSuffix (click)="hidePass()" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon matSuffix class="material-icons"> {{ (hide ? "visibility_off" : "visibility" )}}
+                    </mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+        <div class="text-center  ">
+            <mat-form-field class="input" appearance="outline" style="max-width: 30rem;">
+                <mat-label>Confirma tu contraseña</mat-label>
+                <input  matInput [type]="hide ? 'password' : 'text'" formControlName="confirmarPassUser" maxlength="40">
+                <button mat-icon-button matSuffix (click)="hidePass()" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide" >
+                    <mat-icon matSuffix class="material-icons"> {{ (hide ? "visibility_off" : "visibility" )}}
+                    </mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+        <div class="text-center mt-3 mb-3 ">
+            <a class="text-dark" routerLink="/inicio">Tienes cuenta ? Inicia sesion aqui </a>
+        </div>
+        <div class="text-center m-6">
+            <button [disabled]="registrarsuarioForm.invalid" mat-raised-button color="primary" style="max-width: 15rem;" (click)="loadForm()">Registrarse
+            </button>
+        </div>
+    </form>
+</div>

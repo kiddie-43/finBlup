@@ -1,0 +1,78 @@
+<!-- <app-loading *ngIf="cargando" class="d-flex justify-content-center align-items-center" style="height: 40rem;"></app-loading> -->
+
+
+
+<div class="contenedor d-flex justify-content-center flex-column" *ngIf="!loader.loading">
+    <div class="container text-center text-md-start mt-5 mb-5">
+        <div class="row mt-3">
+            <div class="col-md-7 col-lg-5 col-xl-5 mx-auto mb-md-0 mb-4 d-flex aling-items-center flex-column">
+                <!-- http://dws.local/api/img/locales/noperfil.jpg -->
+                <img src = "{{datosUsuario &&  datosUsuario.urlPerfil  ? datosUsuario.urlPerfil:'//dws.local/api/img/utilidades/noPerfil/noImage.png'}}" class="rounded-circle " style="max-width: 40rem; max-height: 40rem;" alt="">
+
+                <form [formGroup]="userPerfilDataForm" style="width: 100%;">
+
+                    <mat-form-field class="p-4" appearance="outline" style="width: 100%;">
+                        <mat-label>Nick </mat-label>
+
+                        <input matInput type="text" maxlength="40" formControlName="nickUser">
+
+                        <button mat-icon-button matSuffix (click)=" restaurarDataInput('nickUser')">
+                            <mat-icon matSuffix class="material-icons">account_circle</mat-icon>
+                        </button>
+
+                    </mat-form-field>
+
+                    <mat-form-field class="p-4" appearance="outline" style="width: 100%;">
+                        <mat-label>Nombre </mat-label>
+
+                        <input matInput type="text" maxlength="40" formControlName="nombreUser">
+
+                        <button mat-icon-button matSuffix (click)=" restaurarDataInput('nombreUser')">
+                            <mat-icon matSuffix class="material-icons">account_circle</mat-icon>
+                        </button>
+
+                    </mat-form-field>
+
+                    <mat-form-field class="p-4" appearance="outline" style="width: 100%;">
+                        <mat-label>telefono </mat-label>
+
+                        <input matInput type="text" maxlength="9" formControlName="telefonoUser">
+
+                        <button mat-icon-button matSuffix (click)=" restaurarDataInput('telefonoUser')">
+                            <mat-icon matSuffix class="material-icons">smartphone</mat-icon>
+                        </button>
+
+                    </mat-form-field>
+
+                    <mat-form-field class="p-4" appearance="outline" style="width: 100%;">
+                        <mat-label> Email </mat-label>
+
+                        <input matInput type="text" maxlength="40" formControlName="emailUser">
+
+                        <button mat-icon-button matSuffix>
+                            <mat-icon matSuffix class="material-icons">email</mat-icon>
+                        </button>
+
+                    </mat-form-field>
+                </form>
+
+                <div class="d-flex justify-content-center" style="width: 100%;">
+
+                    <div class="d-flex justify-content-center" style="width: 50%;">
+                        <button (click)="closeSesionUser()" class="btn btn-outline-danger">
+                            Cerrar Sesion
+                        </button>
+
+                    </div>
+
+                    <div class="d-flex justify-content-center" style="width: 50%;">
+                        <button class="btn btn-outline-primary" (click)="updateDataUser()" [disabled]="userPerfilDataForm.invalid"> 
+                            Actualizar perfil
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

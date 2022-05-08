@@ -1,0 +1,57 @@
+
+
+<div style="width: 100%;" class="d-flex justify-content-center align-items-center flex-column" *ngIf="!loader.loading && local" >
+
+    <div class="carrusel-container " >
+        <app-carrusel class="w-100" [carrusel]="local.carrusel" class="carrusel"></app-carrusel>
+    </div>
+
+    <div class="rounded container-input carrusel-container carrusel">
+        <p class="header-text"> Nombre del local </p>
+        <mat-divider class="mb-3 bg-dark"></mat-divider>
+        <p>{{local.nombre_local}}</p>
+    </div>
+
+    <div class="rounded container-input carrusel-container carrusel">
+
+        <p class="header-text">Direccion </p>
+        <mat-divider class="mb-3 bg-dark"></mat-divider>
+        <div style="width: 100%"><iframe width="100%" height="300" frameborder="0" scrolling="no" marginheight="0"
+                marginwidth="0"
+                src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=es&amp;q=Les%20Rambles,%201%20Barcelona,%20Spain+(Mi%20nombre%20de%20egocios)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a
+                    href="https://www.gps.ie/car-satnav-gps/">GPS devices</a></iframe>
+        </div>
+    </div>
+
+    <div class="rounded container-input carrusel-container ">
+        
+    <app-tab-descripciones [descripciones]="local.descripcion" [valoracion]="local.valoracion"></app-tab-descripciones>
+    </div>
+
+
+    <div class="rounded container-input carrusel-container text-center">
+        <p class="header-text">Comentar </p>
+        <mat-divider class="mb-3 bg-dark"></mat-divider>
+        <button class="" (click)="crearComentario()" mat-raised-button>Crear comentario</button>
+    </div>
+
+    <div class="rounded container-input carrusel-container text-center">
+        <p class="header-text">Reservar </p>
+        <mat-divider class="mb-3 bg-dark"></mat-divider>
+        <p> <button mat-raised-button (click)="crearReserva()">Reservar Mesa</button></p>
+    </div>
+
+    <div style="width:100%; max-width: 65rem;" class="d-flex justify-content-center align-items-center  carrusel-container " >
+        <div class=" mt-3 m-1 p-2" style="width: 100%;">
+            <p class="header-text">Cometarios</p>
+            <mat-divider class="mb-3 bg-dark"></mat-divider>
+
+            <div class="d-flex justify-content-start align-items-start  flex-column container-coments" style="width: 100%; max-width: 60rem;">
+               <app-comentarios [idLocal]="idLocal" [cambiosComentarios]="updateComent" style="width: 100%;" ></app-comentarios>
+            </div>
+        
+        </div>
+    </div>
+
+
+</div>

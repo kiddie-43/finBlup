@@ -1,0 +1,6 @@
+
+<div class="d-flex justify-content-center flex-column">
+    <div class="d-flex justify-content-center" *ngFor="let reserva of reservas" style="margin-top: 5rem; margin-bottom: 1rem; ">
+        <app-tarjeta-reserva (valueResponse)="recibiRespuesta($event)" [hostelero]="true" style="width: 50rem; "  [reserva]="reserva" ></app-tarjeta-reserva>
+    </div>
+</div>

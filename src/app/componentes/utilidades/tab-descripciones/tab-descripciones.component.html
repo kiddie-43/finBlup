@@ -1,0 +1,37 @@
+<mat-tab-group mat-align-tabs="start">
+    <mat-tab>
+      <ng-template mat-tab-label class="header-text">
+        Descripcion
+        <mat-icon class="material-icons-outlined ml-1">description</mat-icon>
+  
+      </ng-template>
+      <div class="p-2">
+        {{descripciones.descripcion}}
+      </div>
+  
+    </mat-tab>
+  
+    <mat-tab>
+      <ng-template mat-tab-label="aaaaa">
+        Menu
+        <mat-icon class="example-tab-icon ml-1">restaurant</mat-icon>
+  
+      </ng-template>
+      <div class="p-2">
+        {{ descripciones.carta }}
+      </div>
+  
+    </mat-tab>
+    <mat-tab style="font-size: 123rem;">
+      <ng-template mat-tab-label="aaaaa">
+        Puntuacion
+        <mat-icon class="example-tab-icon ml-1">star</mat-icon>
+  
+      </ng-template>
+      <div class="p-2">
+        <app-puntuacion [value]="valoracion"></app-puntuacion>
+      </div>
+  
+    </mat-tab>
+  
+  </mat-tab-group>

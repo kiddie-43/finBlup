@@ -1,0 +1,42 @@
+.separador {
+    border-bottom: 2px solid black;
+    width: 100%;
+}
+
+
+.targeta-container {
+    background-color: rgba(177, 177, 177, 0.161);
+
+    border: 2px solid black;
+    width: 100%;
+    max-width: 90%;
+    height: 10rem;
+    max-height: 20rem;
+    margin-left: 2rem;
+    margin-left: 2rem;
+}
+
+.header-card {
+    font-weight: bold;
+}
+
+.aceptada {
+    color: rgb(255, 183, 0);
+    font-weight: bold;
+}
+
+.reservada {
+    color: green;
+    font-weight: bold;
+}
+
+.sirviendo {
+    color: blue;
+    font-weight: bold;
+
+}
+
+.finalizada {
+    color: red;
+    font-weight: bold;
+}

@@ -1,0 +1,212 @@
+<h2 mat-dialog-title style="width: 100%; " class="p-3">
+  <div class="d-flex justify-content-between ">
+    <div fxLayout="column" fxLayoutGap="gappx">
+      <div>
+        <div *ngIf="!data.edit">
+          Reservar
+        </div>
+        <div *ngIf="data.edit">
+          Editar reserva
+        </div>
+      </div>
+    </div>
+    <button mat-icon-button mat-dialog-close aria-label="Example icon button with a vertical three dot icon">
+      <mat-icon>clear</mat-icon>
+    </button>
+  </div>
+</h2>
+
+
+
+<mat-dialog-content style="width: 100%; max-height: 100rem;">
+
+  <form [formGroup]="createReservaForm">
+
+    <mat-stepper orientation="vertical">
+      <mat-step>
+        <ng-template matStepLabel>Informacion usuario</ng-template>
+        <ng-template matStepContent>
+          <div class="d-flex justify-content-start flex-column">
+            <mat-form-field appearance="outline">
+              <mat-label>Nombre </mat-label>
+              <input matInput formControlName="nombreUsuario">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Apellidos </mat-label>
+              <input matInput formControlName="apellidosUsuario">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Telefono </mat-label>
+              <input matInput maxlength="9" formControlName="telefonoUsuario">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Email </mat-label>
+              <input matInput formControlName="email">
+            </mat-form-field>
+
+          </div>
+
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+
+        </ng-template>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Informacion local</ng-template>
+        <ng-template matStepContent>
+          <div class="d-flex justify-content-start flex-column">
+            <mat-form-field appearance="outline">
+              <mat-label>Nombre </mat-label>
+              <input matInput readonly="readonly" formControlName="nombreLocal">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Direccion </mat-label>
+              <textarea readonly="readonly" matInput formControlName="direccion" style="resize: none;"></textarea>
+            </mat-form-field>
+
+          </div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </ng-template>
+      </mat-step>
+
+
+      <mat-step [hidden]="true">
+        <ng-template matStepLabel>Numero personas </ng-template>
+        <ng-template matStepContent>
+
+          <div class="d-flex justify-content-between flex-row">
+
+            <mat-form-field appearance="outline">
+              <mat-label>Num Peronas </mat-label>
+              <input matInput formControlName="numPersonas">
+            </mat-form-field>
+            <div class="d-flex flex-column ">
+              <button mat-icon-button color="primary" (click)="sumarPersona()"
+                aria-label="Example icon button with a home icon">
+                <mat-icon>expand_less</mat-icon>
+              </button>
+
+              <button mat-icon-button color="primary" (click)="restarPersona()"
+                aria-label="Example icon button with a home icon">
+                <mat-icon> expand_more</mat-icon>
+              </button>
+
+            </div>
+          </div>
+
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </ng-template>
+      </mat-step>
+
+
+
+      <mat-step>
+        <ng-template matStepLabel> Hora / dia </ng-template>
+        <ng-template matStepContent>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Seleccione fecha</mat-label>
+            <input matInput [matDatepicker]="picker" selected="2022/02/20" formControlName="fecha">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="d-flex justify-content-start flex-row">
+            <mat-label>Seleccione hora</mat-label>
+
+
+            <div class="d-flex flex-row">
+              <div class="d-flex justify-content-center aling-items-center flex-column">
+                <input matInput [ngxTimepicker]="toggleTimepicker" [disableClick]="true" readonly [format]="24"
+                  formControlName="hora">
+              </div>
+              <div class="d-flex justify-content-center aling-items-center flex-column">
+                <ngx-material-timepicker-toggle [for]="toggleTimepicker"></ngx-material-timepicker-toggle>
+                <ngx-material-timepicker #toggleTimepicker></ngx-material-timepicker>
+              </div>
+            </div>
+
+
+
+
+
+          </mat-form-field>
+          <!-- <div class="d-flex mt-2" style="width: 50%;">
+          <input matInput [ngxTimepicker]="toggleTimepicker" [disableClick]="true" readonly [format]="24" formControlName="hora">
+          <ngx-material-timepicker-toggle  [for]="toggleTimepicker"></ngx-material-timepicker-toggle>
+          <ngx-material-timepicker #toggleTimepicker></ngx-material-timepicker>
+        </div> -->
+
+          <!-- <input style="height: 2rem;" [ngxTimepicker]="fullTime" [format]="24" readonly>
+          <mat-icon>time</mat-icon>
+
+          <ngx-material-timepicker #fullTime></ngx-material-timepicker> -->
+
+          <div style="margin-top: 1rem;">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+
+        </ng-template>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel> Zona </ng-template>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Selecciona zona</mat-label>
+          <mat-select disableRipple formControlName="zonaLocal">
+            <mat-option *ngFor="let zona of zonaLocal" [value]="zona.id_zona">{{zona.nombre}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+
+
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel> comentario</ng-template>
+        <mat-form-field appearance="outline" style="width: 100%; ">
+          <mat-label>Textarea</mat-label>
+          <textarea style="resize: none; " maxlength="108" formControlName="comentario" matInput> </textarea>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+
+      </mat-step>
+
+
+      <mat-step>
+        <ng-template matStepLabel> confirmar</ng-template>
+
+        <p *ngIf="!createReservaForm.invalid" style="font-weight: bold;"> ¿*Estas seguro de estos datos* ? </p>
+        <p *ngIf="createReservaForm.invalid" style="font-weight: bold; color: red;">Revise sus datos, porfavor.</p>
+
+
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext [disabled]="createReservaForm.invalid"
+          (click)="createReserva()">Enviar</button>
+      </mat-step>
+
+    </mat-stepper>
+
+
+
+  </form>
+
+
+
+</mat-dialog-content>

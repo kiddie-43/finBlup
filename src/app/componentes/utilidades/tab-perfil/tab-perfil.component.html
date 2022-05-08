@@ -1,0 +1,27 @@
+<mat-tab-group mat-align-tabs="center">
+    <mat-tab>
+        <ng-template mat-tab-label class="header-text">
+            Usuario
+        </ng-template>
+        <app-usuario-perfil></app-usuario-perfil>
+    </mat-tab>
+    <mat-tab>
+        <ng-template mat-tab-label class="header-text">
+            Mis reservas
+        </ng-template>
+        <app-reservas-usuario (valueResponse)="getReservas()" [editData]="Data"></app-reservas-usuario>
+    </mat-tab>
+    <mat-tab *ngIf="hostelero">
+        <ng-template mat-tab-label="aaaaa">
+            Local
+        </ng-template>
+        <app-local-perfil></app-local-perfil>
+    </mat-tab>
+    <mat-tab *ngIf="hostelero">
+        <ng-template mat-tab-label="aaaaa">
+            Gestionar reservas local
+        </ng-template>
+      
+        <app-reservas-local (valueResponse)="getReservas()" [editData]="Data"></app-reservas-local>
+    </mat-tab>
+</mat-tab-group>

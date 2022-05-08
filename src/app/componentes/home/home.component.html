@@ -1,0 +1,5 @@
+
+<app-logo class="pt-4 pb-4" *ngIf="!usuarioService.getRegistrado()"></app-logo>
+<app-locales class="pt-4 pb-4" *ngIf="usuarioService.getRegistrado()"></app-locales>
+
+

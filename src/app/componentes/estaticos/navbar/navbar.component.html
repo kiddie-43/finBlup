@@ -1,0 +1,8 @@
+<header class="header-component">
+    <button type="button" style="font-size: 1rem;" class="btn btn-primary m-3" *ngIf="!usuarioService.getRegistrado()" [routerLink]="['/inicio']" >Empezar </button>
+    <div class="d-flex flex-column">
+        <button type="button" style="font-size: 1rem;" class="btn btn-primary m-3" *ngIf="usuarioService.getRegistrado()" [routerLink]="['/perfil']" >Perfil </button>
+        <button type="button" style="font-size: 1rem;" class="btn btn-primary m-3"  [routerLink]="['/home']" >Home </button>
+    </div>
+    
+</header>

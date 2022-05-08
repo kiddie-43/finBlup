@@ -1,0 +1,37 @@
+<div class="container-fluid" class="d-flex justify-content-center">
+  
+    <!-- Metodos de busqueda ( Se añadira mas adelante )
+  -> Por nombre 
+  -> por categoria
+  -> Por ubicacion
+  -> Valoracion ( Se añadira mas adelante )
+  -->
+  
+    <!-- Lista de restaurantes disponibles -->
+  
+  
+  
+    <div class="row d-flex justify-content-center" *ngIf="usuarioService.getRegistrado()">
+
+
+      <div class="col-sm-12 col-md-4 col-xl-12" *ngFor="let local of listaLocales" style="width: 20rem;height: 30rem; margin: 3rem; ">
+  
+        <div class="card" fxLayout="row" fxLayoutAlign="center center" style="font-size: 2rem;">
+  
+          <img src="{{local.url_Perfil }}" class="card-img-top rounded" style="width: 100%;"
+            alt="imagen perfil del local {{local.nombre_local}}" />
+  
+          <div class="card-body text-center" fxLayout="column" fxLayoutAlign="space-around center">
+            <h2 class="card-title" style="border-bottom: 2px solid gray;">{{local.nombre_local}}</h2>
+            <p class="card-text h5">{{local.descripcion}}</p>
+            <button [routerLink]="['/local', local.id_local]" type="button" style="font-size: 1.3rem;" class="btn btn-outline-info text-center">Leer mas </button>
+  
+  
+  
+          </div>
+  
+        </div>
+  
+      </div>
+  
+    </div>

@@ -1,0 +1,20 @@
+
+<mat-card style="max-width: 50rem;">
+
+    <div class="d-flex">
+        <div style="width: 40%;"> <img mat-card-md-image src="{{reserva.urlPerfil}}"></div>
+        <div style="width: 60%; font-size: 1.2rem ; text-align: justify;" class="d-flex flex-column">
+            <!-- <mat-card-title>Actions Buttons</mat-card-title>
+            <mat-card-subtitle>End</mat-card-subtitle> -->
+            <p><span  class=" p-2 header-card" > Nombre : </span> <i style="font-weight: none;">{{ !hostelero ?  reserva.nombre_local :reserva.nombre_usuario}}</i></p>
+            <p> <span class=" p-2 header-card"> Hora : </span> <i> {{ reserva.hora + ' - ' + reserva.fecha }} </i> </p>
+            <p> <span class=" p-2 header-card"> Estado: </span>  <i [ngClass]="{'aceptada':reserva.idEstado === 1,'reservada':reserva.idEstado === 2, 'sirviendo':reserva.idEstado === 3,'finalizada':reserva.idEstado === 4}"> {{reserva.nombreEstado}} </i></p>
+        </div>
+    </div>
+    <mat-card-actions align="end">
+        <button mat-button color="warn" (click)="deleteReserva()"> Eliminar </button>
+        <button mat-button (click)="updateReserva()"> Editar </button>
+        <button mat-button (click)="verReserva()"> Ver </button>
+
+    </mat-card-actions>
+</mat-card>
