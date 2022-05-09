@@ -51,6 +51,7 @@ import { MensageComponent } from './componentes/utilidades/mensage/mensage.compo
 ReservaUpdateComponent
 //import { LocalPerfilComponent } from './componentes/local-perfil/local-perfil.component';
 //import { UsuarioPerfilComponent } from './componentes/usuario-perfil/usuario-perfil.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -101,7 +102,8 @@ ReservaUpdateComponent
     MatSelectModule, 
     MatDatepickerModule, 
     MatNativeDateModule,
-    NgxMaterialTimepickerModule
+    NgxMaterialTimepickerModule, 
+    ToastrModule.forRoot()
     
   ],
   providers: [],

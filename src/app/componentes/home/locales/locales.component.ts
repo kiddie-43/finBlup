@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoadingService } from 'src/app/servicios/loading.service';
 import { LocalesService } from 'src/app/servicios/locales.service';
 import { UsuariosService } from 'src/app/servicios/usuarios.service';
+import { MsgService } from '../../../servicios/msg.service';
 
 UsuariosService
 @Component({
@@ -18,20 +19,28 @@ export class LocalesComponent implements OnInit {
   constructor(
     public localesService: LocalesService,
     public usuarioService: UsuariosService,
-    private loader: LoadingService, 
- 
+    private loader: LoadingService,
+    private msg: MsgService
+
   ) {
-  this.getLocales();
+    this.getLocales();
   }
 
   ngOnInit(): void {
   }
   getLocales() {
-this.loader.loadingScreen();
+    this.loader.loadingScreen();
     return this.localesService.obtenerLocales().subscribe((resp: any) => {
+      console.log(resp);
+      if (resp.mensage.mensageType === 1) {
+        this.listaLocales = resp.data;
+      }
 
-      this.listaLocales = resp;
-      this.cargando = false;
+      if (resp.mensage.mensageType === 3) {
+        this.msg.openMensage(resp.mensage.mensageType, resp.mensage.mensageText)
+      }
+
+
 
       this.loader.disabledLoading();
       return this.listaLocales;

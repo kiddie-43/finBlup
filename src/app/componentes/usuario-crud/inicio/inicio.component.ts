@@ -33,7 +33,7 @@ export class InicioComponent implements OnInit {
             '',
             [
               Validators.required,
-              Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'),
+              Validators.pattern('[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$'),
             ],
           ],
           passUser: ['', Validators.required],

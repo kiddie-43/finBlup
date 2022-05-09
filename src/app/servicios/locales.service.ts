@@ -14,7 +14,7 @@ export class LocalesService {
 
 
   obtenerLocales() {
-    return this.http.get(`${environment.urlServer}/locales/locales.php`).pipe(map((result: any) => { return result.data; }));
+    return this.http.get(`${environment.urlServer}/locales/locales.php`).pipe(map((result: any) => { return result; }));
   }
 
   getLocal(id: any) {

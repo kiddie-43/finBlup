@@ -5,6 +5,8 @@ import { UsuariosService } from 'src/app/servicios/usuarios.service';
 import { environment } from 'src/environments/environment.prod';
 UsuariosService
 import { Md5 } from 'ts-md5';
+import { MsgService } from '../../../servicios/msg.service';
+MsgService
 @Component({
   selector: 'app-registar-usuario',
   templateUrl: './registar-usuario.component.html',
@@ -16,7 +18,8 @@ export class RegistarUsuarioComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private UserService: UsuariosService,
-    private router: Router
+    private router: Router, 
+    private msg : MsgService
 
   ) {
     this.crearFormulario();
@@ -90,10 +93,13 @@ export class RegistarUsuarioComponent implements OnInit {
 
   // mandar parametros al server
   registrarse(params: any) {
-    return this.UserService.registrarse(params).subscribe((result: any) => {
-     let temp = result;
+    return this.UserService.registrarse(params).subscribe((resp: any) => {
+     let temp = resp;
       if (temp['id'] != '') {
-      this.router.navigate(['/home']); 
+     
+        this.msg.openMensage(resp.mensage.mensageType, resp.mensage.mensageText)
+     
+        this.router.navigate(['/inicio']); 
        localStorage.setItem(environment.userCode, temp['id']);
         this.UserService.updateRegistrado  ( true);
 

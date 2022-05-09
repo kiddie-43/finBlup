@@ -8,7 +8,8 @@ import { LocalesService } from 'src/app/servicios/locales.service';
 import { environment } from 'src/environments/environment.prod';
 import { ComentarioFormComponent } from './comentarios/comentario-form/comentario-form.component';
 import { ReservaFormComponent } from './reserva-form/reserva-form.component';
-
+import { MsgService } from '../../../../servicios/msg.service';
+MsgService
 ReservaFormComponent
 ComentarioFormComponent
 
@@ -23,15 +24,16 @@ export class LocalComponent implements OnInit {
   local !: any;
   carusel !: Array<string>;
   idLocal !: number;
-  comentarios : any;
-  updateComent : boolean = false;
+  comentarios: any;
+  updateComent: boolean = false;
 
   constructor(
     private localService: LocalesService,
     private activateRoute: ActivatedRoute,
     private dialog: MatDialog,
-    private comentariosService: ComentariosService, 
-    public loader : LoadingService
+    private comentariosService: ComentariosService,
+    public loader: LoadingService,
+    private msg: MsgService
   ) { }
 
   ngOnInit(): void {
@@ -44,16 +46,16 @@ export class LocalComponent implements OnInit {
 
   getLocal() {
     this.loader.loadingScreen();
-    
-    this.localService.getLocal(this.idLocal).subscribe((result: any) => {     
+
+    this.localService.getLocal(this.idLocal).subscribe((result: any) => {
       this.local = result;
-      
+
       this.loader.disabledLoading();
     });
   }
 
   crearComentario() {
-   this.loader.loadingScreen();
+    this.loader.loadingScreen();
     const params = {
       edit: false,
       data: {
@@ -63,28 +65,38 @@ export class LocalComponent implements OnInit {
 
     const dialogRef = this.dialog.open(ComentarioFormComponent, { data: params },);
 
-     dialogRef.afterClosed().subscribe((resp: any) => {
-      this.getLocal();
-  
-       this.updateComent = !this.updateComent;
-       this.loader.disabledLoading();
+    dialogRef.afterClosed().subscribe((resp: any) => {
+
+      if (resp.mensage.mensageType === 1) {
+        this.getLocal();
+
+        this.updateComent = !this.updateComent;
+      }
+
+      if (resp.mensage.mensageType === 3) {
+        this.msg.openMensage(resp.mensage.mensageType, resp.mensage.mensageText)
+      }
+
+
+
+      this.loader.disabledLoading();
     })
 
   }
 
-  crearReserva(){
+  crearReserva() {
     const params = {
       edit: false,
       data: {
-        id_local: this.idLocal, 
-        idUsuario : localStorage.getItem(environment.userCode)
+        id_local: this.idLocal,
+        idUsuario: localStorage.getItem(environment.userCode)
       }
     };
 
     const dialogRef = this.dialog.open(ReservaFormComponent, { data: params },);
-     dialogRef.afterClosed().subscribe((resp: any) => {
+    dialogRef.afterClosed().subscribe((resp: any) => {
     })
- 
+
   }
 
 
