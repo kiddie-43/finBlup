@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class MsgService {
-  public text: string = "";
-  public icon: string = ""
+  public text: string = "hola mundo ";
+  public icon: string = "warning"
   public hide: boolean = true
   constructor() { }
 
