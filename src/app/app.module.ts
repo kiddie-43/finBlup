@@ -47,6 +47,7 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { TimeComponent } from './componentes/utilidades/time/time.component';
 import { TarjetaReservaComponent } from './componentes/perfil/reservas-crud/tarjeta-reserva/tarjeta-reserva.component';
 import { ReservaUpdateComponent } from './componentes/perfil/reservas-crud/reserva-update/reserva-update.component';
+import { MensageComponent } from './componentes/utilidades/mensage/mensage.component';
 ReservaUpdateComponent
 //import { LocalPerfilComponent } from './componentes/local-perfil/local-perfil.component';
 //import { UsuarioPerfilComponent } from './componentes/usuario-perfil/usuario-perfil.component';
@@ -78,7 +79,8 @@ ReservaUpdateComponent
     ReservasUsuarioComponent,
     TimeComponent,
     TarjetaReservaComponent,
-    ReservaUpdateComponent
+    ReservaUpdateComponent,
+    MensageComponent
   ],
   imports: [
     BrowserModule,
